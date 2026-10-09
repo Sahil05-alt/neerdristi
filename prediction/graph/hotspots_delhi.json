@@ -1,0 +1,142 @@
+[
+  {
+    "street_id": "minto-bridge",
+    "name": "Minto Bridge",
+    "lat": 28.6334521,
+    "lng": 77.2266682,
+    "check": "https://www.google.com/maps?q=28.6334521,77.2266682"
+  },
+  {
+    "street_id": "pul-prahladpur-underpass",
+    "name": "Pul Prahladpur Underpass",
+    "lat": 28.49912,
+    "lng": 77.29845,
+    "check": ""
+  },
+  {
+    "street_id": "zakhira-flyover",
+    "name": "Zakhira Flyover",
+    "lat": 28.6704636,
+    "lng": 77.1606005,
+    "check": "https://www.google.com/maps?q=28.6704636,77.1606005"
+  },
+  {
+    "street_id": "azadpur-underpass",
+    "name": "Azadpur Underpass",
+    "lat": 28.7091899,
+    "lng": 77.1771304,
+    "check": "https://www.google.com/maps?q=28.7091899,77.1771304"
+  },
+  {
+    "street_id": "jahangirpuri-metro-station",
+    "name": "Jahangirpuri Metro Station",
+    "lat": 28.7256463,
+    "lng": 77.1631321,
+    "check": "https://www.google.com/maps?q=28.7256463,77.1631321"
+  },
+  {
+    "street_id": "loni-road-golchakkar",
+    "name": "Loni Road Golchakkar",
+    "lat": 28.7020878,
+    "lng": 77.2910547,
+    "check": ""
+  },
+  {
+    "street_id": "karala-kanjhawala-road",
+    "name": "Karala Kanjhawala Road",
+    "lat": 28.7321173,
+    "lng": 77.037425,
+    "check": "https://www.google.com/maps?q=28.7321173,77.037425"
+  },
+  {
+    "street_id": "pragati-maidan-tunnel",
+    "name": "Pragati Maidan Tunnel",
+    "lat": 28.6148624,
+    "lng": 77.2450252,
+    "check": "https://www.google.com/maps?q=28.6148624,77.2450252"
+  },
+  {
+    "street_id": "ito-intersection",
+    "name": "ITO Intersection",
+    "lat": 28.6276231,
+    "lng": 77.2429603,
+    "check": ""
+  },
+  {
+    "street_id": "barapullah-elevated-road",
+    "name": "Barapullah Elevated Road",
+    "lat": 28.5869427,
+    "lng": 77.2484830,
+    "check": ""
+  },
+  {
+    "street_id": "sarai-kale-khan",
+    "name": "Sarai Kale Khan",
+    "lat": 28.5891891,
+    "lng": 77.2580654,
+    "check": "https://www.google.com/maps?q=28.5891891,77.2580654"
+  },
+  {
+    "street_id": "yamuna-bazar",
+    "name": "Yamuna Bazar",
+    "lat": 28.6620047,
+    "lng": 77.2393813,
+    "check": "https://www.google.com/maps?q=28.6620047,77.2393813"
+  },
+  {
+    "street_id": "khanpur",
+    "name": "Khanpur",
+    "lat": 28.5127982,
+    "lng": 77.2323949,
+    "check": "https://www.google.com/maps?q=28.5127982,77.2323949"
+  },
+  {
+    "street_id": "kirari",
+    "name": "Kirari",
+    "lat": 28.6687479,
+    "lng": 77.0558992,
+    "check": "https://www.google.com/maps?q=28.6687479,77.0558992"
+  },
+  {
+    "street_id": "mundka",
+    "name": "Mundka",
+    "lat": 28.6824341,
+    "lng": 77.0305741,
+    "check": "https://www.google.com/maps?q=28.6824341,77.0305741"
+  },
+  {
+    "street_id": "old-rajinder-nagar",
+    "name": "Old Rajinder Nagar",
+    "lat": 28.6409416,
+    "lng": 77.1854030,
+    "check": "https://www.google.com/maps?q=28.6409416,77.185403"
+  },
+  {
+    "street_id": "lodhi-road",
+    "name": "Lodhi Road",
+    "lat": 28.5916376,
+    "lng": 77.2312423,
+    "check": "https://www.google.com/maps?q=28.5916376,77.2312423"
+  },
+  {
+    "street_id": "sagarpur",
+    "name": "Sagarpur",
+    "lat": 28.6091456,
+    "lng": 77.0995916,
+    "check": "https://www.google.com/maps?q=28.6091456,77.0995916"
+  },
+  {
+    "street_id": "patparganj-mother-dairy",
+    "name": "Patparganj Mother Dairy",
+    "lat": 28.620171,
+    "lng": 77.287705,
+    "check": "https://www.google.com/maps?q=28.620171,77.287705"
+  },
+  {
+    "street_id": "who-building-ring-road",
+    "name": "WHO Building Ring Road",
+    "lat": 28.622467,
+    "lng": 77.248308,
+    "check": "https://www.google.com/maps?q=28.622467,77.248308"
+  }
+]

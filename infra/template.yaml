@@ -1,0 +1,125 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Neerdrishti - Flood Digital Twin MVP skeleton
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 30
+    MemorySize: 256
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref StreetsTable
+        BUCKET_NAME: !Sub "neerdrishti-frames-${AWS::AccountId}"
+
+Resources:
+
+  # ---------- Storage ----------
+
+  FramesBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "neerdrishti-frames-${AWS::AccountId}"
+      CorsConfiguration:
+        CorsRules:
+          - AllowedMethods: [GET, PUT, POST]
+            AllowedOrigins: ["*"]
+            AllowedHeaders: ["*"]
+
+  StreetsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: neerdrishti-streets
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: street_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: street_id
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+
+  # ---------- API ----------
+
+  FloodApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+      Cors:
+        AllowMethods: "'GET,POST,OPTIONS'"
+        AllowHeaders: "'Content-Type'"
+        AllowOrigin: "'*'"
+
+  # ---------- Lambdas ----------
+
+  UploadUrlFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambdas.upload_url.handler.lambda_handler
+      CodeUri: ../backend/
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+                - s3:GetObject
+              Resource: !Sub "arn:aws:s3:::neerdrishti-frames-${AWS::AccountId}/*"
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FloodApi
+            Path: /frames/upload-url
+            Method: POST
+
+  InferenceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambdas.inference.handler.lambda_handler
+      CodeUri: ../backend/
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref StreetsTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource: !Sub "arn:aws:s3:::neerdrishti-frames-${AWS::AccountId}/*"
+      Events:
+        S3Upload:
+          Type: S3
+          Properties:
+            Bucket: !Ref FramesBucket
+            Events: s3:ObjectCreated:*
+
+  StreetsApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambdas.streets_api.handler.lambda_handler
+      CodeUri: ../backend/
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref StreetsTable
+      Events:
+        GetAll:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FloodApi
+            Path: /streets
+            Method: GET
+        GetOne:
+          Type: Api
+          Properties:
+            RestApiId: !Ref FloodApi
+            Path: /streets/{street_id}
+            Method: GET
+
+Outputs:
+  ApiUrl:
+    Description: Base URL for the API
+    Value: !Sub "https://${FloodApi}.execute-api.${AWS::Region}.amazonaws.com/dev"
+  BucketName:
+    Value: !Ref FramesBucket
+  TableName:
+    Value: !Ref StreetsTable
